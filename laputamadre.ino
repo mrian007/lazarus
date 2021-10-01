@@ -60,8 +60,8 @@ if ((ultra_der <= 50) && (ultra_der >= 1)){
 
 bluto=Serial.read();
 if (bluto='P'){
-tone(5);
-digitalWrite(6);
+tone(5,178,1000);
+digitalWrite(6,HIGH);
 }
 
 delay (500);
