@@ -1,74 +1,87 @@
 //sensor de ultrasonido
 long u_tiempo(int trigger_pin, int echo_pin) {
-    digitalWrite(trigger_pin, LOW);
-    delayMicroseconds(2);
-    digitalWrite(trigger_pin, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(trigger_pin, LOW);
-    long microseconds = pulseIn(echo_pin ,HIGH);
-    return microseconds;
+  digitalWrite(trigger_pin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigger_pin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigger_pin, LOW);
+  long microseconds = pulseIn(echo_pin , HIGH);
+  return microseconds;
 }
 
 long u_distancia(int trigger_pin, int echo_pin) {
-    long microseconds = u_tiempo(trigger_pin, echo_pin);
-    long u_distancia;
-    u_distancia = microseconds/29/2;
-    if (u_distancia == 0){
-        u_distancia = 999;
-    }
-    return u_distancia;
+  long microseconds = u_tiempo(trigger_pin, echo_pin);
+  long u_distancia;
+  u_distancia = microseconds / 29 / 2;
+  if (u_distancia == 0) {
+    u_distancia = 999;
+  }
+  return u_distancia;
 }
 
-int ultra_izq=0;
-int ultra_cen=0;
-int ultra_der=0;
+int ultra_izq = 0;
+int ultra_cen = 0;
+int ultra_der = 0;
 
-int bluto=0;
+int blut = 0;
 void setup() {
-  pinMode(8,OUTPUT);        //SIZQ
-  pinMode(9,INPUT);
+  pinMode(8, OUTPUT);       //SIZQ
+  pinMode(9, INPUT);
 
-  pinMode(10,INPUT);      //SCEN
-  pinMode(11,OUTPUT);
+  pinMode(11, INPUT);     //SCEN
+  pinMode(10, OUTPUT);
 
-  pinMode(12,OUTPUT);      //SDER
-  pinMode(13,INPUT);
+  pinMode(12, OUTPUT);     //SDER
+  pinMode(13, INPUT);
 
-pinMode(2,OUTPUT);       //MDER
-pinMode(3,OUTPUT);       //MCEN
-pinMode(4,OUTPUT);       //MIZQ
+  pinMode(2, OUTPUT);      //MDER
+  pinMode(3, OUTPUT);      //MCEN
+  pinMode(4, OUTPUT);      //MIZQ
 
-pinMode(5,OUTPUT);       //PIP
-pinMode(6,OUTPUT);       //LUZ
-Serial.begin(9600);
+  pinMode(5, OUTPUT);      //PIP
+  pinMode(6, OUTPUT);      //LUZ
+  Serial.begin(9600);
 }
 
 void loop() {
-    ultra_der = u_distancia(12,13);
-    ultra_cen = u_distancia(11,10);
-    ultra_izq = u_distancia(8,9);
+  ultra_der = u_distancia(12, 13);    //(primero triger)
+  Serial.print(ultra_der);
+  Serial.print("   ");
+  ultra_cen = u_distancia(10, 11);
+  Serial.print(ultra_cen);
+  Serial.print("   ");
+  ultra_izq = u_distancia(8, 9);
+  Serial.print(ultra_izq);
+  Serial.print("   ");
+  Serial.println("");
 
-if ((ultra_der <= 50) && (ultra_der >= 1)){
-  digitalWrite(2,HIGH);
+  if ((ultra_der <= 100) && (ultra_der >= 1)) {
+    digitalWrite(2, HIGH);
+    Serial.print("rum1");
+    Serial.print("   ");
   }
-  if ((ultra_cen <= 50) && (ultra_cen >= 1)){
-  digitalWrite(3,HIGH);
+  if ((ultra_cen <= 100) && (ultra_cen >= 1)) {
+    digitalWrite(3, HIGH);
+    Serial.print("rum2");
+    Serial.print("   "); 
   }
-  if ((ultra_izq <= 50) && (ultra_izq >= 1)){
-  digitalWrite(4,HIGH);
+  if ((ultra_izq <= 100) && (ultra_izq >= 1)) {
+    digitalWrite(4, HIGH);
+    Serial.print("rum3");
+    Serial.print("   ");
+  }
+   Serial.println("");
+  blut = Serial.read();
+  if (blut = 'P') {
+    bluto();
   }
 
-bluto=Serial.read();
-if (bluto='P'){
-bluto();
+  delay (500);
 }
 
-delay (500);
-}
-
-void bluto(){
+void bluto() {
   tone(5, 441, 500);
   tone(5, 441, 500);
-  digitalWrite(6,HIGH);
+  digitalWrite(6, HIGH);
 
 }
