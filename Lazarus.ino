@@ -59,17 +59,17 @@ void loop() {
     digitalWrite(2, HIGH);
     Serial.print("rum1");
     Serial.print("   ");
-  }
+  } else { digitalWrite(2, LOW); }
   if ((ultra_cen <= 100) && (ultra_cen >= 1)) {
     digitalWrite(3, HIGH);
     Serial.print("rum2");
     Serial.print("   "); 
-  }
+  } else { digitalWrite(3, LOW); }
   if ((ultra_izq <= 100) && (ultra_izq >= 1)) {
     digitalWrite(4, HIGH);
     Serial.print("rum3");
     Serial.print("   ");
-  }
+  } else { digitalWrite(4, LOW); }
    Serial.println("");
   blut = Serial.read();
   if (blut = 'P') {
