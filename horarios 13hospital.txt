@@ -1,0 +1,90 @@
+horario de servicio:4:00-23:20
+
+
+Av.Tacuarí y Costanera
+
+Avenida Tamobor de Tacuarí,8090
+
+Avenida López y Planes,7297
+
+Av.Lopez y Planes y Av.Kolping
+
+Avenida Vicente López y Planes,7400
+
+Avenida Eva Perón, 10
+
+Av.Eva Peron y Calle Neuman
+
+Av.Centenario y Calle 141
+
+Av.Centenario y Av.Jauretche
+
+Av.Jauretche y Av.Alem
+
+Av.Jauretche y Calle 30a
+
+Av.Jauretche y Av.Urquiza
+
+Av.Urquiza y Calle Zaluski
+
+Av.Urquiza y Calle 119
+
+Av.Urquiza y Av.Lucas B. Areco(115)
+
+Av.Urquiza y Calle Maciel
+
+Av.Urquiza y Av.Zapiola
+
+Av.Urquiza y Av.Aguado
+
+Av.Urquiza y Calle Posadas
+
+Av.Urquiza y Av.Las Heras
+
+Av.Urquiza y Av.San Martin
+
+Av.Urquiza y Av.Tomás Guido
+
+Av.Urquiza C/ Av.Santa Catalina
+
+Av.Urquiza y Calle Montero 
+
+Av.Urquiza y Calle Goméz Portiño
+
+Av.Roque Pérez y Calle Chpoyá
+
+Calle Junín y Calle Alvear
+
+Calle Junín y Calle Sarmiento
+
+Estación Junín(Andén2)
+
+Calle Junín y Calle Santiago del Estero
+
+Av.Mitre y Calle España
+
+Av.López Torres y Calle Vicente Casares
+
+Avenida López Torres,3078
+
+Av.López Torres y Av.Mariano Moreno
+
+Av.López Torres y Av.Ambrosetti
+
+Av.López Torres y Av.Cabred
+
+Av.López Torres y Av.Maipú
+
+Av.Lópes Torres y Av.Monteagudo
+
+Av.López Torres y Calle Suiza
+
+Av.López Torres y Av.Comandante Rosales
+
+Av.Cmte. Rosales y Av.Uruguay
+
+Av.Comandate Rosales,2410
+
+Avenida Bustamante,2530
+
+Av.Bustamante y Calle Avila
