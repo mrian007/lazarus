@@ -38,7 +38,7 @@ void setup() {
   pinMode(3, OUTPUT);      //MCEN
   pinMode(4, OUTPUT);      //MIZQ
 
-  pinMode(5, OUTPUT);      //PIP
+  pinMode(5, OUTPUT);      //BEEP
   pinMode(6, OUTPUT);      //LUZ
   Serial.begin(9600);
 }
@@ -72,7 +72,7 @@ void loop() {
   } else { digitalWrite(4, LOW); }
    Serial.println("");
   blut = Serial.read();
-  if (blut = 'P') {
+  if (blut = 'F') {
     bluto();
   }
 
