@@ -39,8 +39,8 @@ void setup() {
   pinMode(3, OUTPUT);      //MCEN
   pinMode(4, OUTPUT);      //MIZQ
 
-  pinMode(5, OUTPUT);      //Zumbador
-  pinMode(6, OUTPUT);      //LUZ
+  pinMode(6, OUTPUT);      //Zumbador
+  pinMode(7, OUTPUT);      //LUZ
   Serial.begin(9600);
 }
 
@@ -78,14 +78,17 @@ void loop() {
   blut = Serial.read();
   if (blut = 'F') {
     bluto();
+    Serial.print("aaaaaaaaaaaaaa");
   }
 
   delay (500);
 }
 
 void bluto() {
-  tone(5, 441, 500);
-  tone(5, 441, 500);
-  digitalWrite(6, HIGH);
+  tone(6, 441, 500);
+  tone(6, 441, 500);
+  digitalWrite(7, HIGH);
+  
+  
 
 }
