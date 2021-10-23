@@ -1,5 +1,6 @@
 horario de servicio:4:00-23:20
 
+ida->
 
 Av.Tacuarí y Costanera
 
@@ -88,3 +89,69 @@ Av.Comandate Rosales,2410
 Avenida Bustamante,2530
 
 Av.Bustamante y Calle Avila
+
+Avenida Bustamante,3122
+
+Avenida Santa Catalina,4848
+
+Av.Santa Catalina y Av.Ituzangó
+
+Avenida Ituzangó,3606
+
+Av.Ituzangó y Av.San Matín
+
+Av.Ituzangó y Calle Apóstoles
+
+Avenida Ituzangó,4570
+
+Avenida Ituzangó,4873
+
+Avenida Ituzangó,5048
+
+Avenida Ituzangó,5199-5291
+
+Avenida Ituzangó,5673
+
+Av.Ituzangó y Calle 119
+
+Av.Ituzangó y Monseñor de Andrea
+
+Avenida Ituzangó,6297
+
+Av.Ituzangó y Av.Jauretche
+
+Av.Jauretche E/ Calle 96 y Calle 100
+
+Av.Jauretche y C/ Av.Bustamante
+
+Av.Bustamante y Calle 136
+
+Avenida J.E. Vivanco,109
+
+Av.Bustamante y Calle 141
+
+Av.Bustamante y Calle 143a
+
+vuelta->
+
+Calle 141,4971
+
+Calle 139 A,4979
+
+Avenida J.E. Vivanco,4978
+
+Calle 135a,5030
+
+Calle 133a,5030
+
+Av.Jauretche y Calle 100
+
+Av.Jauretche y Calle 96
+
+Av.Jauretche y Av.Ituzangó
+
+Avenida Ituzangó,6297
+
+Avenida Ituzangó,6071
+
+Avenida Ituzangó,6017
