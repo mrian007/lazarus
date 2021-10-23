@@ -1,4 +1,4 @@
-//sensor de ultrasonido
+// Sensor de ultrasonido
 long u_tiempo(int trigger_pin, int echo_pin) {
   digitalWrite(trigger_pin, LOW);
   delayMicroseconds(2);
@@ -18,12 +18,13 @@ long u_distancia(int trigger_pin, int echo_pin) {
   }
   return u_distancia;
 }
-
+// Variables
 int ultra_izq = 0;
 int ultra_cen = 0;
 int ultra_der = 0;
 
 int blut = 0;
+
 void setup() {
   pinMode(8, OUTPUT);       //SIZQ
   pinMode(9, INPUT);
@@ -38,13 +39,13 @@ void setup() {
   pinMode(3, OUTPUT);      //MCEN
   pinMode(4, OUTPUT);      //MIZQ
 
-  pinMode(5, OUTPUT);      //BEEP
+  pinMode(5, OUTPUT);      //Zumbador
   pinMode(6, OUTPUT);      //LUZ
   Serial.begin(9600);
 }
 
 void loop() {
-  ultra_der = u_distancia(12, 13);    //(primero triger)
+  ultra_der = u_distancia(12, 13);    //(Trigger, Echo)
   Serial.print(ultra_der);
   Serial.print("   ");
   ultra_cen = u_distancia(10, 11);
@@ -55,22 +56,25 @@ void loop() {
   Serial.print("   ");
   Serial.println("");
 
+  // Funcionamiento de motores
   if ((ultra_der <= 100) && (ultra_der >= 1)) {
     digitalWrite(2, HIGH);
-    Serial.print("rum1");
+    Serial.print("Motor 1");
     Serial.print("   ");
   } else { digitalWrite(2, LOW); }
   if ((ultra_cen <= 100) && (ultra_cen >= 1)) {
     digitalWrite(3, HIGH);
-    Serial.print("rum2");
+    Serial.print("Motor 2");
     Serial.print("   "); 
   } else { digitalWrite(3, LOW); }
   if ((ultra_izq <= 100) && (ultra_izq >= 1)) {
     digitalWrite(4, HIGH);
-    Serial.print("rum3");
+    Serial.print("Motor 3");
     Serial.print("   ");
   } else { digitalWrite(4, LOW); }
    Serial.println("");
+  
+  // Bluetooth
   blut = Serial.read();
   if (blut = 'F') {
     bluto();
