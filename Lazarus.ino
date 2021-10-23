@@ -35,11 +35,11 @@ void setup() {
   pinMode(12, OUTPUT);     //SDER
   pinMode(13, INPUT);
 
-  pinMode(2, OUTPUT);      //MDER
-  pinMode(3, OUTPUT);      //MCEN
-  pinMode(4, OUTPUT);      //MIZQ
+  pinMode(3, OUTPUT);      //MDER
+  pinMode(5, OUTPUT);      //MCEN
+  pinMode(6, OUTPUT);      //MIZQ
 
-  pinMode(6, OUTPUT);      //Zumbador
+  pinMode(2, OUTPUT);      //Zumbador
   pinMode(7, OUTPUT);      //LUZ
   Serial.begin(9600);
 }
@@ -58,20 +58,20 @@ void loop() {
 
   // Funcionamiento de motores
   if ((ultra_der <= 100) && (ultra_der >= 1)) {
-    digitalWrite(2, HIGH);
+    digitalWrite(3, HIGH);
     Serial.print("Motor 1");
     Serial.print("   ");
-  } else { digitalWrite(2, LOW); }
+  } else { digitalWrite(3, LOW); }
   if ((ultra_cen <= 100) && (ultra_cen >= 1)) {
-    digitalWrite(3, HIGH);
+    digitalWrite(5, HIGH);
     Serial.print("Motor 2");
     Serial.print("   "); 
-  } else { digitalWrite(3, LOW); }
+  } else { digitalWrite(5, LOW); }
   if ((ultra_izq <= 100) && (ultra_izq >= 1)) {
-    digitalWrite(4, HIGH);
+    digitalWrite(6, HIGH);
     Serial.print("Motor 3");
     Serial.print("   ");
-  } else { digitalWrite(4, LOW); }
+  } else { digitalWrite(6, LOW); }
    Serial.println("");
   
   // Bluetooth
@@ -85,8 +85,8 @@ void loop() {
 }
 
 void bluto() {
-  tone(6, 441, 500);
-  tone(6, 441, 500);
+  tone(2, 441, 500);
+  tone(2, 441, 500);
   digitalWrite(7, HIGH);
   
   
