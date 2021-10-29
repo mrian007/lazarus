@@ -23,7 +23,7 @@ int ultra_izq = 0;
 int ultra_cen = 0;
 int ultra_der = 0;
 
-int blut = 0;
+int btSerial = 0;
 
 void setup() {
   pinMode(8, OUTPUT);       //SIZQ
@@ -46,41 +46,44 @@ void setup() {
 
 void loop() {
   ultra_der = u_distancia(12, 13);    //(Trigger, Echo)
+  Serial.print("D: ");
   Serial.print(ultra_der);
   Serial.print("   ");
   ultra_cen = u_distancia(10, 11);
+  Serial.print("C: ");
   Serial.print(ultra_cen);
   Serial.print("   ");
   ultra_izq = u_distancia(8, 9);
+  Serial.print("I: ");
   Serial.print(ultra_izq);
   Serial.print("   ");
   Serial.println("");
 
   // Funcionamiento de motores
   if ((ultra_der <= 100) && (ultra_der >= 1)) {
-    digitalWrite(3, HIGH);
-    Serial.print("Motor Derecho");
-    Serial.print("   ");
+    analogWrite(3, ultra_der);
+    //digitalWrite(3, HIGH);
+    Serial.println("Motor Derecho");
   } else { digitalWrite(3, LOW); }
   if ((ultra_cen <= 100) && (ultra_cen >= 1)) {
-    digitalWrite(5, HIGH);
-    Serial.print("Motor Central");
-    Serial.print("   "); 
+    analogWrite(5, ultra_cen);
+    //digitalWrite(5, HIGH);
+    Serial.println("Motor Central");
   } else { digitalWrite(5, LOW); }
   if ((ultra_izq <= 100) && (ultra_izq >= 1)) {
-    digitalWrite(6, HIGH);
-    Serial.print("Motor Izquierdo");
-    Serial.print("   ");
+    analogWrite(6, ultra_izq);
+    //digitalWrite(6, HIGH);
+    Serial.println("Motor Izquierdo");
   } else { digitalWrite(6, LOW); }
    Serial.println("");
   
   // Bluetooth
-  btSerial = Serial.read();
+  /*btSerial = Serial.read();
   if (btSerial = 'F') {
     btAction();
-    Serial.print("F has been pressed");
-  }
-
+    Serial.println("F has been pressed");
+  }*/
+  
   delay(500);
 }
 
