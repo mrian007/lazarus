@@ -59,36 +59,34 @@ void loop() {
   // Funcionamiento de motores
   if ((ultra_der <= 100) && (ultra_der >= 1)) {
     digitalWrite(3, HIGH);
-    Serial.print("Motor 1");
+    Serial.print("Motor Derecho");
     Serial.print("   ");
   } else { digitalWrite(3, LOW); }
   if ((ultra_cen <= 100) && (ultra_cen >= 1)) {
     digitalWrite(5, HIGH);
-    Serial.print("Motor 2");
+    Serial.print("Motor Central");
     Serial.print("   "); 
   } else { digitalWrite(5, LOW); }
   if ((ultra_izq <= 100) && (ultra_izq >= 1)) {
     digitalWrite(6, HIGH);
-    Serial.print("Motor 3");
+    Serial.print("Motor Izquierdo");
     Serial.print("   ");
   } else { digitalWrite(6, LOW); }
    Serial.println("");
   
   // Bluetooth
-  blut = Serial.read();
-  if (blut = 'F') {
-    bluto();
-    Serial.print("aaaaaaaaaaaaaa");
+  btSerial = Serial.read();
+  if (btSerial = 'F') {
+    btAction();
+    Serial.print("F has been pressed");
   }
 
-  delay (500);
+  delay(500);
 }
 
-void bluto() {
+void btAction() {
   tone(2, 441, 500);
   tone(2, 441, 500);
   digitalWrite(7, HIGH);
   
-  
-
 }
