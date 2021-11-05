@@ -17,6 +17,9 @@ long u_distancia(int trigger_pin, int echo_pin) {
   return u_distancia; }
   
 // Variables
+const int motorIzq = 3;
+const int motorCen = 5;
+const int motorDer = 6;
 int ultra_izq = 0;
 int ultra_cen = 0;
 int ultra_der = 0;
@@ -32,9 +35,9 @@ void setup() {
   pinMode(12, OUTPUT); //Ultrasonido Derecho
   pinMode(13, INPUT);
 
-  pinMode(3, OUTPUT);    //MotorDER
-  pinMode(5, OUTPUT);    //MotorCEN
-  pinMode(6, OUTPUT);    //MotorIZQ
+  pinMode(motorDer, OUTPUT);    //MotorDER
+  pinMode(motorCen, OUTPUT);    //MotorCEN
+  pinMode(motorIzq, OUTPUT);    //MotorIZQ
 
   pinMode(2, OUTPUT);     //Zumbador
   pinMode(7, OUTPUT);    //Luz
@@ -45,24 +48,28 @@ void setup() {
 void loop() {
   // Impresión de la distancia recibida por los sensores Ultrasonido
   ultra_der = u_distancia(12, 13);    //(Trigger, Echo)
-  Serial.println("D: ");
+  Serial.print("D: ");
   Serial.print(ultra_der);
   ultra_cen = u_distancia(10, 11);
-  Serial.print("C: ");
+  Serial.print(" C: ");
   Serial.print(ultra_cen);
+  Serial.print(" PWM: ");
+  Serial.print(map(ultra_cen, 0, 100, 230, 100));
   ultra_izq = u_distancia(8, 9);
-  Serial.print("I: ");
+  Serial.print(" I: ");
   Serial.print(ultra_izq);
+  Serial.print(" PWM: ");
+  Serial.println(map(ultra_izq, 0, 100, 200, 100));
 
   // Funcionamiento de motores usando PWM
   if (ultra_der <= 100) {
     // Si la distancia es menor o igual a 100 centimétros, manda un PWM
     // con una intensidad dependiente de cuan cerca o lejos esté, de lo contrario, apaga el motor
-    analogWrite(3, map(ultra_der, 0, 100, 200, 100)); } else { analogWrite(3, LOW); }
+    analogWrite(motorDer, map(ultra_der, 0, 100, 200, 100)); } else { analogWrite(motorDer, LOW); }
   if (ultra_cen <= 100) {
-    analogWrite(5, map(ultra_cen, 0, 100, 230, 100)); } else { analogWrite(5, LOW); }
+    analogWrite(motorCen, map(ultra_cen, 0, 100, 230, 100)); } else { analogWrite(motorCen, LOW); }
   if (ultra_izq <= 100) {
-    analogWrite(6, map(ultra_izq, 0, 100, 200, 100)); } else { analogWrite(6, LOW); }
+    analogWrite(motorIzq, map(ultra_izq, 0, 100, 200, 100)); } else { analogWrite(motorIzq, LOW); }
   
   // Bluetooth
   if (Serial.available() > 0){
@@ -73,7 +80,7 @@ void loop() {
     }
   }
   
-  delay(500);
+  //delay(500);
 }
 
 // Función que ejecute el bluetooth
