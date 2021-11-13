@@ -21,13 +21,16 @@ const int motorIzq = 3;
 const int motorCen = 5;
 const int motorDer = 6;
 int ultra_izq = 0;
+int pwm_izq=0;
 int ultra_cen = 0;
+int pwm_cen=0;
 int ultra_der = 0;
+int pwm_der=0;
 int btSerial = 0;
 
 void setup() {
-  pinMode(8, OUTPUT);  //Ultrasonido Izquierdo
-  pinMode(9, INPUT);
+  pinMode(4, OUTPUT);  //Ultrasonido Izquierdo
+  pinMode(7, INPUT);
 
   pinMode(11, INPUT);  // Ultrasonido Centro
   pinMode(10, OUTPUT);
@@ -40,36 +43,56 @@ void setup() {
   pinMode(motorIzq, OUTPUT);    //MotorIZQ
 
   pinMode(2, OUTPUT);     //Zumbador
-  pinMode(7, OUTPUT);    //Luz
+  pinMode(8, OUTPUT);    //Luz
   
   Serial.begin(9600);
 }
 
 void loop() {
-  // Impresión de la distancia recibida por los sensores Ultrasonido
   ultra_der = u_distancia(12, 13);    //(Trigger, Echo)
-  Serial.print("D: ");
-  Serial.print(ultra_der);
+  ultra_izq = u_distancia(4, 7);
   ultra_cen = u_distancia(10, 11);
-  Serial.print(" C: ");
-  Serial.print(ultra_cen);
-  Serial.print(" PWM: ");
-  Serial.print(map(ultra_cen, 0, 100, 230, 100));
-  ultra_izq = u_distancia(8, 9);
+  
+    if(ultra_izq>200){ultra_izq=0;}
   Serial.print(" I: ");
   Serial.print(ultra_izq);
   Serial.print(" PWM: ");
-  Serial.println(map(ultra_izq, 0, 100, 200, 100));
+  pwm_izq=map(ultra_izq, 0, 200, 1023, -100);
+  Serial.print(pwm_izq);
+  
+  
+  // Impresión de la distancia recibida por los sensores Ultrasonido
+  
+  if(ultra_der>200){ultra_der=0;}
+  Serial.print(" D: ");
+  Serial.print(ultra_der);
+  Serial.print(" PWM: ");
+  pwm_der=map(ultra_der, 0, 200, 1023, -100);
+  Serial.print(pwm_der);
+  
+
+  
+  
+  if(ultra_cen>200){ultra_cen=0;}
+  Serial.print(" C: ");
+  Serial.print(ultra_cen);
+  Serial.print(" PWM: ");
+  pwm_cen=map(ultra_cen, 0, 200, 1023, -100);
+  Serial.println(pwm_cen);
+  
+
 
   // Funcionamiento de motores usando PWM
-  if (ultra_der <= 100) {
+  if ((ultra_der <= 100) && (ultra_der > 0)) {
     // Si la distancia es menor o igual a 100 centimétros, manda un PWM
     // con una intensidad dependiente de cuan cerca o lejos esté, de lo contrario, apaga el motor
-    analogWrite(motorDer, map(ultra_der, 0, 100, 200, 100)); } else { analogWrite(motorDer, LOW); }
-  if (ultra_cen <= 100) {
-    analogWrite(motorCen, map(ultra_cen, 0, 100, 230, 100)); } else { analogWrite(motorCen, LOW); }
-  if (ultra_izq <= 100) {
-    analogWrite(motorIzq, map(ultra_izq, 0, 100, 200, 100)); } else { analogWrite(motorIzq, LOW); }
+    analogWrite(motorDer, pwm_der); } else { analogWrite(motorDer, LOW); }
+
+  if ((ultra_cen <= 100) && (ultra_cen > 0)) {
+    analogWrite(motorCen, pwm_cen); } else { analogWrite(motorCen, LOW); }
+  
+  if ((ultra_izq <= 100) && (ultra_izq > 0)) {
+    analogWrite(motorIzq, pwm_izq); } else { analogWrite(motorIzq, LOW); }
   
   // Bluetooth
   if (Serial.available() > 0){
@@ -87,5 +110,5 @@ void loop() {
 void btAction() {
   tone(2, 441, 500);
   tone(2, 441, 500);
-  digitalWrite(7, HIGH);
+  digitalWrite(8, HIGH);
 }
