@@ -29,8 +29,8 @@ int pwm_der=0;
 int btSerial = 0;
 
 void setup() {
-  pinMode(4, OUTPUT);  //Ultrasonido Izquierdo
-  pinMode(7, INPUT);
+  pinMode(8, OUTPUT);  //Ultrasonido Izquierdo
+  pinMode(9, INPUT);
 
   pinMode(11, INPUT);  // Ultrasonido Centro
   pinMode(10, OUTPUT);
@@ -43,14 +43,14 @@ void setup() {
   pinMode(motorIzq, OUTPUT);    //MotorIZQ
 
   pinMode(2, OUTPUT);     //Zumbador
-  pinMode(8, OUTPUT);    //Luz
+//  pinMode(8, OUTPUT);    //Luz
   
   Serial.begin(9600);
 }
 
 void loop() {
   ultra_der = u_distancia(12, 13);    //(Trigger, Echo)
-  ultra_izq = u_distancia(4, 7);
+  ultra_izq = u_distancia(8, 9);
   ultra_cen = u_distancia(10, 11);
   
     if(ultra_izq>200){ultra_izq=0;}
@@ -78,9 +78,11 @@ void loop() {
   Serial.print(ultra_cen);
   Serial.print(" PWM: ");
   pwm_cen=map(ultra_cen, 0, 200, 1023, -100);
-  Serial.println(pwm_cen);
+  Serial.print(pwm_cen);
   
-
+//--------------------------------------------------------------
+ Serial.println("");
+//--------------------------------------------------------------
 
   // Funcionamiento de motores usando PWM
   if ((ultra_der <= 100) && (ultra_der > 0)) {
